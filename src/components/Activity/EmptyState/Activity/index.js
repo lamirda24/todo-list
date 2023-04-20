@@ -14,6 +14,7 @@ const ActivityEmpty = (props) => {
         width={760}
         height={400}
       />
+      {/*  */}
     </div>
   );
 };
