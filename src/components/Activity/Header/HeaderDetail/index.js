@@ -13,7 +13,7 @@ const HeaderDetail = (props) => {
   const [newTitle, setNewTitle] = useState("");
   const [isEdit, setIsEdit] = useState(false);
   const [showSort, setShowSort] = useState(false);
-  const [sortSelected, setSortSelected] = useState("");
+  const [sortSelected, setSortSelected] = useState("new");
 
   useEffect(() => {
     setNewTitle(title);

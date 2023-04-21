@@ -34,7 +34,7 @@ const DetailActivity = ({ todos }) => {
     }
 
     // onSortByDateAsc();
-  }, [router]);
+  }, [router, refresh]);
 
   const handleModalEdit = (data) => {
     setEditModal(true);
@@ -44,39 +44,6 @@ const DetailActivity = ({ todos }) => {
     setModalDelete(true);
     setSelectedData(data);
   };
-
-  // const onSortByNameAsc = () => {
-  //   let newData = data?.todo_items.sort((a, b) =>
-  //     a.title.localeCompare(b.title)
-  //   );
-  //   setTodoList(newData);
-  //   setRefresh(!refresh);
-  // };
-
-  // const onSortByNameDesc = () => {
-  //   let newData = data?.todo_items.sort((a, b) =>
-  //     b?.title.localeCompare(a?.title)
-  //   );
-  //   setTodoList(newData);
-  //   setRefresh(!refresh);
-  // };
-
-  // const onSortNewest = () => {
-  //   let newData = data?.todo_items.sort((a, b) => b.id - a.id);
-  //   setTodoList(newData);
-  //   setRefresh(!refresh);
-  // };
-
-  // const onSortOldest = () => {
-  //   let newData = data?.todo_items.sort((a, b) => aid - b.id);
-  //   setTodoList(newData);
-  //   setRefresh(!refresh);
-  // };
-  // const onSortStatus = () => {
-  //   let newData = data?.todo_items.sort((a, b) => b.is_active - a.is_active);
-  //   setTodoList(newData);
-  //   setRefresh(!refresh);
-  // };
 
   return (
     <MainLayouts>

@@ -38,6 +38,11 @@ const Services = () => {
     return res.data;
   };
 
+  const deleteActivity = async (id) => {
+    const res = await request.delete(`/activity-groups/${id}`);
+    return res?.data;
+  };
+
   return {
     getActivity,
     addActivity,
@@ -46,6 +51,7 @@ const Services = () => {
     changeTitleActivity,
     editTodoStatus,
     deleteTodo,
+    deleteActivity,
   };
 };
 export default Services();

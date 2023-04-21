@@ -8,20 +8,21 @@ import ActivityEmpty from "../EmptyState/Activity";
 import HeaderActivity from "../Header";
 import moment from "moment";
 import { config } from "@/config/config";
+import ModalDelete from "@/components/Reusable/ModalDelete";
 
 const MainActivity = () => {
   const [data, setData] = useState("");
-  const [refresh, setRefesh] = useState(false);
+  const [refresh, setRefresh] = useState(false);
+  const [modalDelete, setModalDelete] = useState(false);
+  const [selectedData, setSelectedData] = useState("");
 
-  const addNewActivity = () => {
+  const addNewActivity = async () => {
     let payload = {
       title: "New Activity",
       email: config.email,
     };
-
-    let res = services.addActivity(payload);
-    console.log(res, "res");
-    setRefesh(!refresh);
+    let res = await services.addActivity(payload);
+    setRefresh(!refresh);
   };
   useEffect(() => {
     getData();
@@ -32,12 +33,31 @@ const MainActivity = () => {
     setData(res?.data);
   };
 
+  const handleModalDelete = (data) => {
+    setModalDelete(true);
+    setSelectedData(data);
+  };
+
   return (
     <Container
       data_cy="MainActivityContainer"
       className="flex flex-col gap-[60px]"
     >
-      <HeaderActivity action={addNewActivity} />
+      <HeaderActivity
+        action={addNewActivity}
+        handleRefresh={setRefresh}
+        refresh={refresh}
+      />
+      {modalDelete && (
+        <ModalDelete
+          data={selectedData}
+          handleModal={setModalDelete}
+          show={modalDelete}
+          handleRefresh={setRefresh}
+          refresh={refresh}
+          isActivity
+        />
+      )}
       <CardContainer>
         {data.length > 0 ? (
           <>
@@ -48,6 +68,7 @@ const MainActivity = () => {
                 title={item?.title}
                 date={moment(item?.created_at).format("DD MMMM YYYY")}
                 id={item?.id}
+                handleDelete={() => handleModalDelete(item)}
               />
             ))}
           </>
