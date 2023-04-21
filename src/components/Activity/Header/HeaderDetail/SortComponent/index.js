@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 const SortComponent = (props) => {
-  const { sortAz, sortZa, sortNew, sortOld, sortStat } = props;
+  const { sortAz, sortZa, sortNew, sortOld, sortStat, type } = props;
   return (
     <div
       data-cy="Sort"
@@ -24,14 +24,16 @@ const SortComponent = (props) => {
           />
           <p className="text-[16px] text-[#4A4A4A] font-[400]">Terbaru</p>
         </button>
-        {/* <div>
-          <Image
-            src="/assets/sort/check.png"
-            alt="check"
-            width={18}
-            height={18}
-          />
-        </div> */}
+        {type === "new" && (
+          <div>
+            <Image
+              src="/assets/sort/check.png"
+              alt="check"
+              width={18}
+              height={18}
+            />
+          </div>
+        )}
       </div>
       <div
         className="flex flex-row items-center justify-between py-[14px] px-[21px] cursor-pointer"
@@ -49,14 +51,16 @@ const SortComponent = (props) => {
           />
           <p className="text-[16px] text-[#4A4A4A] font-[400]">Terlama</p>
         </button>
-        {/* <div>
-          <Image
-            src="/assets/sort/check.png"
-            alt="check"
-            width={18}
-            height={18}
-          />
-        </div> */}
+        {type === "old" && (
+          <div>
+            <Image
+              src="/assets/sort/check.png"
+              alt="check"
+              width={18}
+              height={18}
+            />
+          </div>
+        )}
       </div>
       <div
         className="flex flex-row items-center justify-between py-[14px] px-[21px] cursor-pointer"
@@ -69,14 +73,16 @@ const SortComponent = (props) => {
           <Image src="/assets/sort/az.png" alt="az" width={18} height={18} />
           <p className="text-[16px] text-[#4A4A4A] font-[400]">AZ</p>
         </button>
-        {/* <div>
-          <Image
-            src="/assets/sort/check.png"
-            alt="check"
-            width={18}
-            height={18}
-          />
-        </div> */}
+        {type === "az" && (
+          <div>
+            <Image
+              src="/assets/sort/check.png"
+              alt="check"
+              width={18}
+              height={18}
+            />
+          </div>
+        )}
       </div>
       <div
         className="flex flex-row items-center justify-between py-[14px] px-[21px] cursor-pointer"
@@ -89,14 +95,16 @@ const SortComponent = (props) => {
           <Image src="/assets/sort/za.png" alt="za" width={18} height={18} />
           <p className="text-[16px] text-[#4A4A4A] font-[400]">ZA</p>
         </button>
-        {/* <div>
-          <Image
-            src="/assets/sort/check.png"
-            alt="check"
-            width={18}
-            height={18}
-          />
-        </div> */}
+        {type === "za" && (
+          <div>
+            <Image
+              src="/assets/sort/check.png"
+              alt="check"
+              width={18}
+              height={18}
+            />
+          </div>
+        )}
       </div>
       <div
         className="flex flex-row items-center justify-between py-[14px] px-[21px] cursor-pointer"
@@ -114,14 +122,16 @@ const SortComponent = (props) => {
           />
           <p className="text-[16px] text-[#4A4A4A] font-[400]">Belum Selesai</p>
         </button>
-        {/* <div>
-          <Image
-            src="/assets/sort/check.png"
-            alt="check"
-            width={18}
-            height={18}
-          />
-        </div> */}
+        {type === "stat" && (
+          <div>
+            <Image
+              src="/assets/sort/check.png"
+              alt="check"
+              width={18}
+              height={18}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

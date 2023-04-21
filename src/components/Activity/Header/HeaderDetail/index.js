@@ -49,6 +49,7 @@ const HeaderDetail = (props) => {
     newData.sort((a, b) => a.title.localeCompare(b.title));
     handleTodo(newData);
     setShowSort(false);
+    setSortSelected("az");
     // handleRefresh(!refresh);
   };
 
@@ -56,6 +57,7 @@ const HeaderDetail = (props) => {
     const newData = [...todo];
     newData?.sort((a, b) => b?.title.localeCompare(a?.title));
     handleTodo(newData);
+    setSortSelected("za");
     setShowSort(false);
   };
 
@@ -63,6 +65,8 @@ const HeaderDetail = (props) => {
     const newData = [...todo];
     newData.sort((a, b) => b.id - a.id);
     handleTodo(newData);
+    setSortSelected("new");
+
     setShowSort(false);
   };
 
@@ -70,6 +74,8 @@ const HeaderDetail = (props) => {
     const newData = [...todo];
     newData?.sort((a, b) => a.id - b.id);
     handleTodo(newData);
+    setSortSelected("old");
+
     setShowSort(false);
 
     // handleRefresh(!refresh);
@@ -78,6 +84,7 @@ const HeaderDetail = (props) => {
     const newData = [...todo];
     newData?.sort((a, b) => b.is_active - a.is_active);
     handleTodo(newData);
+    setSortSelected("stat");
     setShowSort(false);
   };
 
@@ -152,6 +159,7 @@ const HeaderDetail = (props) => {
                 sortNew={onSortNewest}
                 sortOld={onSortOldest}
                 sortStat={onSortStatus}
+                type={sortSelected}
               />
             )}
           </div>
