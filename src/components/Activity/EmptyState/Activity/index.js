@@ -4,7 +4,7 @@ import React from "react";
 const ActivityEmpty = (props) => {
   return (
     <div
-      data-cy="empty-state-activity"
+      data-cy="activity-empty-state"
       className="flex items-center justify-center cursor-pointer"
       onClick={props?.action}
     >
@@ -14,7 +14,6 @@ const ActivityEmpty = (props) => {
         width={760}
         height={400}
       />
-      {/*  */}
     </div>
   );
 };

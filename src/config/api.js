@@ -1,27 +1,30 @@
 import axios from "axios";
+import { config } from "./config";
 
-export default async function api({ url, method, data, router }) {
-  try {
-    const response = await axios({
-      url,
-      method,
-      data,
-      headers,
-    });
+// export const source = axios.CancelToken.source();
 
-    return response;
-  } catch (error) {
-    if (error?.response.status >= 300) {
-      if (error?.response.status >= 500) {
-        router.push("/");
-        return error?.response;
-      }
-      if (error?.response.status === 401 || error?.response.status === 403) {
-        router.push("/");
-        return error?.response;
-      }
-    }
+export const API_URL = config.api;
 
-    return error?.response;
+const request = axios.create({
+  baseURL: `${API_URL}`,
+  timeout: 300000, // 300s
+  headers: {
+    "Content-Type": "application/json",
+  },
+  // cancelToken: source.token
+});
+
+/**
+ * refresh token and redirect to login page
+ * */
+request.interceptors.response?.use(
+  (response) => response,
+  async (error) => {
+    return error.response;
   }
-}
+
+  // return Error object with Promise
+  // return Promise.reject(error.message)
+);
+
+export { request };

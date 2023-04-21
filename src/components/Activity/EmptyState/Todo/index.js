@@ -2,11 +2,15 @@ import Image from "next/image";
 import React from "react";
 
 const TodoEmpty = (props) => {
+  const { setShowModal } = props;
+  const addList = () => {
+    setShowModal(true);
+  };
   return (
     <div
-      data-cy="empty-state-todo"
+      data-cy="todo-empty-state"
       className="flex items-center justify-center cursor-pointer pt-[60px]"
-      onClick={props?.action}
+      onClick={addList}
     >
       <Image
         src={`/assets/todo-empty-state.png`}
