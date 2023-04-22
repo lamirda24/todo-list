@@ -21,15 +21,12 @@ const ModalDelete = (props) => {
   };
 
   return (
-    <Modal
-      onClose={handleCloseModal}
-      isOpen={show}
-      isCentered
-      data-cy="modal-delete"
-      size="xl"
-    >
+    <Modal onClose={handleCloseModal} isOpen={show} isCentered size="xl">
       <ModalOverlay />
-      <ModalContent className="flex flex-col items-center w-[490px] py-[43px] ">
+      <ModalContent
+        className="flex flex-col items-center w-[490px] py-[43px]"
+        data-cy="modal-delete"
+      >
         <ModalHeader className="flex flex-col items-center">
           <span data-cy="modal-delete-icon">
             <svg
