@@ -9,6 +9,7 @@ import services from "@/services";
 import Modal from "@/components/Other/ModalAdd";
 import ModalDeleteTodo from "@/components/Other/ModalDeleteTodo";
 import ModalAdd from "@/components/Other/ModalAdd";
+import { Alert } from "@chakra-ui/react";
 
 const DetailActivity = ({ todos }) => {
   const router = useRouter();
@@ -20,6 +21,7 @@ const DetailActivity = ({ todos }) => {
   const [selectedData, setSelectedData] = useState("");
   const [modalDelete, setModalDelete] = useState(false);
   const [todoList, setTodoList] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
 
   const getDetail = async () => {
     const res = await services.getDetailActivity(router?.query?.slug);
@@ -61,26 +63,34 @@ const DetailActivity = ({ todos }) => {
     setEditModal(false);
     setRefresh(!refresh);
   };
+
+  const handleShowAlert = () => {
+    setShowAlert(true);
+  };
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+    setRefresh(!refresh);
+  };
   return (
     <MainLayouts>
       {showModal && (
-        // <div data-cy="modal-add">
         <ModalAdd
           show={showModal}
           handleCloseModal={handleCloseModal}
           isEdit={false}
           data={data?.id}
         />
-        // </div>
       )}
       {modalDelete && (
-        // <div data-cy="modal-delete">
         <ModalDeleteTodo
           data={selectedData}
           show={modalDelete}
           handleCloseModal={handleCloseDelete}
+          handleShowAlert={handleShowAlert}
         />
-        // </div>
+      )}
+      {showAlert && (
+        <Alert handleCloseAlert={handleCloseAlert} showAlert={showAlert} />
       )}
       {editModal && (
         <ModalAdd

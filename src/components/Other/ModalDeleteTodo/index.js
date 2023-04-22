@@ -11,11 +11,12 @@ import {
 import React from "react";
 
 const ModalDeleteTodo = (props) => {
-  const { data, show, handleCloseModal } = props;
+  const { data, show, handleCloseModal, handleShowAlert } = props;
 
   const handleDeleteTodo = async () => {
     await services.deleteTodo(data?.id).then(() => {
       handleCloseModal();
+      handleShowAlert();
     });
   };
 
