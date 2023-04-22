@@ -175,6 +175,7 @@ const ModalAdd = (props) => {
             }`}
             onClick={onSubmit}
             disabled={name === "" ? true : false}
+            data-cy="modal-add-save-button"
           >
             Simpan
           </button>
