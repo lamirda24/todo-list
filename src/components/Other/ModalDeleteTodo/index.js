@@ -59,7 +59,7 @@ const ModalDeleteTodo = (props) => {
             id="modal-title"
             data-cy="modal-delete-title"
           >
-            Apakah anda yakiny menghapus activity
+            Apakah anda yakiny menghapus List Item
             <span className="font-semibold"> “{data?.title}”?</span>
           </h3>
         </ModalBody>
