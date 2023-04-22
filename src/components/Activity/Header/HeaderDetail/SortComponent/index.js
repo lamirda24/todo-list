@@ -5,16 +5,14 @@ const SortComponent = (props) => {
   const { sortAz, sortZa, sortNew, sortOld, sortStat, type } = props;
   return (
     <div
-      data-cy="Sort"
-      className="shadow-md bg-[#FFF] absolute z-10 rounded-[6px] w-[235px]   grid divide-y-2 divide-[#E5E5E5] "
+      data-cy="sort-parent"
+      className="shadow-md bg-[#FFF] absolute z-10 rounded-[6px] w-[235px]   grid divide-y-2 divide-[#E5E5E5]"
     >
-      <div
-        className="flex flex-row items-center justify-between py-[14px] px-[21px] cursor-pointer "
-        data-cy="sort-latest"
-      >
+      <div className="flex flex-row items-center justify-between py-[14px] px-[21px] cursor-pointer ">
         <button
           className="w-full flex flex-row gap-2 items-center"
           onClick={sortNew}
+          data-cy="sort-latest"
         >
           <Image
             src="/assets/sort/latest.png"
@@ -35,13 +33,11 @@ const SortComponent = (props) => {
           </div>
         )}
       </div>
-      <div
-        className="flex flex-row items-center justify-between py-[14px] px-[21px] cursor-pointer"
-        data-cy="sort-oldest"
-      >
+      <div className="flex flex-row items-center justify-between py-[14px] px-[21px] cursor-pointer">
         <button
           className="w-full flex flex-row gap-2 items-center"
           onClick={sortOld}
+          data-cy="sort-oldest"
         >
           <Image
             src="/assets/sort/oldest.png"
@@ -62,13 +58,11 @@ const SortComponent = (props) => {
           </div>
         )}
       </div>
-      <div
-        className="flex flex-row items-center justify-between py-[14px] px-[21px] cursor-pointer"
-        data-cy="sort-az"
-      >
+      <div className="flex flex-row items-center justify-between py-[14px] px-[21px] cursor-pointer">
         <button
           className="w-full flex flex-row gap-2 items-center"
           onClick={sortAz}
+          data-cy="sort-az"
         >
           <Image src="/assets/sort/az.png" alt="az" width={18} height={18} />
           <p className="text-[16px] text-[#4A4A4A] font-[400]">AZ</p>
@@ -84,13 +78,11 @@ const SortComponent = (props) => {
           </div>
         )}
       </div>
-      <div
-        className="flex flex-row items-center justify-between py-[14px] px-[21px] cursor-pointer"
-        data-cy="sort-za"
-      >
+      <div className="flex flex-row items-center justify-between py-[14px] px-[21px] cursor-pointer">
         <button
           className="w-full flex flex-row gap-2 items-center"
           onClick={sortZa}
+          data-cy="sort-za"
         >
           <Image src="/assets/sort/za.png" alt="za" width={18} height={18} />
           <p className="text-[16px] text-[#4A4A4A] font-[400]">ZA</p>
@@ -106,13 +98,11 @@ const SortComponent = (props) => {
           </div>
         )}
       </div>
-      <div
-        className="flex flex-row items-center justify-between py-[14px] px-[21px] cursor-pointer"
-        data-cy="sort-unfinished"
-      >
+      <div className="flex flex-row items-center justify-between py-[14px] px-[21px] cursor-pointer">
         <button
           className="w-full flex flex-row gap-2 items-center"
           onClick={sortStat}
+          data-cy="sort-unfinished"
         >
           <Image
             src="/assets/sort/unfinished.png"
