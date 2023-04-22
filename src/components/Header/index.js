@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../Reusable/Container";
+import Container from "../Other/Container";
 
 const Header = (props) => {
   return (

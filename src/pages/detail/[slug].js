@@ -1,4 +1,4 @@
-import Container from "@/components/Reusable/Container";
+import Container from "@/components/Other/Container";
 import MainLayouts from "@/layouts/MainLayouts";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
@@ -7,8 +7,8 @@ import TodoEmpty from "@/components/Activity/EmptyState/Todo";
 import CardContainer from "@/components/Activity/CardContainer";
 import CardTodo from "@/components/Activity/CardContainer/CardTodo";
 import services from "@/services";
-import Modal from "@/components/Reusable/Modal";
-import ModalDelete from "@/components/Reusable/ModalDelete";
+import Modal from "@/components/Other/Modal";
+import ModalDelete from "@/components/Other/ModalDelete";
 
 const DetailActivity = ({ todos }) => {
   const router = useRouter();

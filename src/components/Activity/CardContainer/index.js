@@ -1,6 +1,5 @@
-import Container from "@/components/Reusable/Container";
+import Container from "@/components/Other/Container";
 import React from "react";
-import ItemCard from "./Card";
 
 const CardContainer = ({ children }) => {
   return (

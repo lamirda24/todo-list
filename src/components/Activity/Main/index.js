@@ -1,4 +1,4 @@
-import Container from "@/components/Reusable/Container";
+import Container from "@/components/Other/Container";
 import services from "@/services";
 import React, { useEffect, useState } from "react";
 import CardContainer from "../CardContainer";
@@ -7,8 +7,8 @@ import ActivityEmpty from "../EmptyState/Activity";
 import HeaderActivity from "../Header";
 import moment from "moment";
 import { config } from "@/config/config";
-import ModalDelete from "@/components/Reusable/ModalDelete";
-import Alert from "@/components/Reusable/Alert";
+import ModalDelete from "@/components/Other/ModalDelete";
+import Alert from "@/components/Other/Alert";
 
 const MainActivity = () => {
   const [data, setData] = useState("");
