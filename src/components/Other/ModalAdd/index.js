@@ -150,14 +150,19 @@ const ModalAdd = (props) => {
                     <div role="none" className="grid divide-y-2 ">
                       {option?.map((item, id) => (
                         <div
-                          className="text-gray-700  p-4 text-sm flex flex-row gap-2 cursor-pointer hover:bg-slate-400"
+                          className="text-gray-700  p-4 text-sm  cursor-pointer hover:bg-slate-400"
                           data-cy={item.cy}
                           key={item?.priority}
                           onClick={() => handleChangeDropDown(item)}
                           tabIndex={id}
                         >
-                          <span>{item.pict}</span>
-                          <p>{item?.label}</p>
+                          <div
+                            data-cy="modal-add-priority-item"
+                            className="flex flex-row gap-2 items-center"
+                          >
+                            <span>{item.pict}</span>
+                            <p>{item?.label}</p>
+                          </div>
                         </div>
                       ))}
                     </div>
