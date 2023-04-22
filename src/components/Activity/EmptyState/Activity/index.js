@@ -9,6 +9,7 @@ const ActivityEmpty = (props) => {
       onClick={props?.action}
     >
       <Image
+        data-cy="activity-empty-state"
         src={`/assets/activity-empty-state.png`}
         alt="empty-state"
         width={760}
