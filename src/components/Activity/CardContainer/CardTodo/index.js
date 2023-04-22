@@ -2,13 +2,11 @@ import services from "@/services";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { options } from "@/utils/priority";
-import Modal from "@/components/Other/ModalAdd";
 
 const CardTodo = (props) => {
-  const { title, id, is_active, priority, activity_group_id } = props?.data;
+  const { title, id, is_active, priority } = props?.data;
   const { handleRefresh, refresh, handleEdit, handleDelete } = props;
   const [isChecked, setIsChecked] = useState(false);
-  const [showEdit, setShowEdit] = useState(false);
 
   const onChangeCheckBox = () => {
     let payload;

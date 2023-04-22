@@ -4,15 +4,9 @@ import React from "react";
 const Alert = (props) => {
   const { handleCloseAlert, showAlert } = props;
   return (
-    <Modal
-      onClose={handleCloseAlert}
-      isOpen={showAlert}
-      isCentered
-      data-cy="modal-information"
-      size="md"
-    >
+    <Modal onClose={handleCloseAlert} isOpen={showAlert} isCentered size="md">
       <ModalOverlay />
-      <ModalContent className="!rounded-[12px]">
+      <ModalContent className="!rounded-[12px]" data-cy="modal-information">
         <div className="flex flex-row px-[30px] py-[18px] items-center gap-[10px]">
           <span data-cy="modal-information-icon">
             <svg

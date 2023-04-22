@@ -64,19 +64,23 @@ const DetailActivity = ({ todos }) => {
   return (
     <MainLayouts>
       {showModal && (
+        // <div data-cy="modal-add">
         <ModalAdd
           show={showModal}
           handleCloseModal={handleCloseModal}
           isEdit={false}
           data={data?.id}
         />
+        // </div>
       )}
       {modalDelete && (
+        // <div data-cy="modal-delete">
         <ModalDeleteTodo
           data={selectedData}
           show={modalDelete}
           handleCloseModal={handleCloseDelete}
         />
+        // </div>
       )}
       {editModal && (
         <ModalAdd

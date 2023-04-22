@@ -68,15 +68,9 @@ const ModalAdd = (props) => {
   }, []);
 
   return (
-    <Modal
-      onClose={handleCloseModal}
-      isOpen={show}
-      isCentered
-      data-cy="modal-add"
-      size="xl"
-    >
+    <Modal onClose={handleCloseModal} isOpen={show} isCentered size="xl">
       <ModalOverlay />
-      <ModalContent className="grid divide-y-2">
+      <ModalContent className="grid divide-y-2" data-cy="modal-add">
         <ModalHeader>
           <h3 data-cy="modal-add-title" className="text-lg font-bold">
             Tambah List Item

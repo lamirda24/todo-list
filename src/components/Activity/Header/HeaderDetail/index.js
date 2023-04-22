@@ -85,10 +85,7 @@ const HeaderDetail = (props) => {
 
   return (
     <>
-      <div
-        data-cy="header-detail-activity"
-        className="flex flex-row justify-between items-center"
-      >
+      <div className="flex flex-row justify-between items-center">
         <div className="flex flex-row gap-[36px] items-center">
           <button onClick={onBackButton} data-cy="todo-back-button">
             <Image
