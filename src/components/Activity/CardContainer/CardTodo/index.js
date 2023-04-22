@@ -2,7 +2,7 @@ import services from "@/services";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { options } from "@/utils/priority";
-import Modal from "@/components/Other/Modal";
+import Modal from "@/components/Other/ModalAdd";
 
 const CardTodo = (props) => {
   const { title, id, is_active, priority, activity_group_id } = props?.data;

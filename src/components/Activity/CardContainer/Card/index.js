@@ -11,7 +11,7 @@ const ItemCard = (props) => {
   return (
     <div
       data-cy={props.cy}
-      className="flex flex-col px-[27px] py-[22px] shadow-xl bg-white w-[235px] h-[235px] rounded-xl justify-between "
+      className="flex flex-col px-[27px] py-[22px] shadow-xl bg-white w-[235px] h-[235px] rounded-xl justify-between"
     >
       <div
         className="h-full cursor-pointer"

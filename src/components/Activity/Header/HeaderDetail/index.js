@@ -8,8 +8,7 @@ const HeaderDetail = (props) => {
   const router = useRouter();
 
   const { id, title } = props?.data;
-  const { handleRefresh, refresh, showModal, setShowModal, handleTodo, todo } =
-    props;
+  const { handleTodo, todo, handleShow } = props;
   const [newTitle, setNewTitle] = useState("");
   const [isEdit, setIsEdit] = useState(false);
   const [showSort, setShowSort] = useState(false);
@@ -21,10 +20,6 @@ const HeaderDetail = (props) => {
 
   const handleEdit = () => {
     setIsEdit(!isEdit);
-  };
-
-  const addList = () => {
-    setShowModal(true);
   };
 
   const onBackButton = () => {
@@ -167,7 +162,7 @@ const HeaderDetail = (props) => {
           <button
             className="rounded-[45px] px-[21px] bg-[#16ABF8]  py-[13px] cursor-pointer"
             data-cy="todo-add-button"
-            onClick={addList}
+            onClick={handleShow}
           >
             <p className="text-white text-[18px]  font-semibold">+ Tambah</p>
           </button>

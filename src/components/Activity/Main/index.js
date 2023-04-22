@@ -77,7 +77,7 @@ const MainActivity = () => {
             {data?.map((item, id) => (
               <ItemCard
                 key={item?.id}
-                cy={`activity-item-` + id}
+                cy={`activity-item`}
                 title={item?.title}
                 date={moment(item?.created_at).format("DD MMMM YYYY")}
                 id={item?.id}

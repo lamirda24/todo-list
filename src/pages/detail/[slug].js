@@ -4,11 +4,11 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import HeaderDetail from "@/components/Activity/Header/HeaderDetail";
 import TodoEmpty from "@/components/Activity/EmptyState/Todo";
-import CardContainer from "@/components/Activity/CardContainer";
 import CardTodo from "@/components/Activity/CardContainer/CardTodo";
 import services from "@/services";
-import Modal from "@/components/Other/Modal";
-import ModalDelete from "@/components/Other/ModalDelete";
+import Modal from "@/components/Other/ModalAdd";
+import ModalDeleteTodo from "@/components/Other/ModalDeleteTodo";
+import ModalAdd from "@/components/Other/ModalAdd";
 
 const DetailActivity = ({ todos }) => {
   const router = useRouter();
@@ -45,37 +45,48 @@ const DetailActivity = ({ todos }) => {
     setSelectedData(data);
   };
 
+  const handleCloseDelete = () => {
+    setModalDelete(false);
+    setRefresh(!refresh);
+  };
+
+  const handleShowAddModal = () => {
+    setShowModal(true);
+  };
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setRefresh(!refresh);
+  };
+  const handleCloseEdit = () => {
+    setEditModal(false);
+    setRefresh(!refresh);
+  };
   return (
     <MainLayouts>
       {showModal && (
-        <Modal
+        <ModalAdd
           show={showModal}
-          setShow={setShowModal}
+          handleCloseModal={handleCloseModal}
+          isEdit={false}
           data={data?.id}
-          refresh={refresh}
-          handleRefresh={setRefresh}
         />
       )}
       {modalDelete && (
-        <ModalDelete
+        <ModalDeleteTodo
           data={selectedData}
-          handleModal={setModalDelete}
           show={modalDelete}
-          handleRefresh={setRefresh}
-          refresh={refresh}
-          isListItem
+          handleCloseModal={handleCloseDelete}
         />
       )}
       {editModal && (
-        <Modal
-          isEdit
+        <ModalAdd
           show={editModal}
-          setShow={setEditModal}
+          handleCloseModal={handleCloseEdit}
+          isEdit={true}
           data={selectedData}
-          refresh={refresh}
-          handleRefresh={setRefresh}
         />
       )}
+
       <Container
         data_cy="detail-activity-container"
         className="pt-[60px] h-[100vh]"
@@ -84,10 +95,9 @@ const DetailActivity = ({ todos }) => {
           data={data}
           handleRefresh={setRefresh}
           refresh={refresh}
-          showModal={showModal}
-          setShowModal={setShowModal}
-          handleTodo={setTodoList}
+          handleShow={handleShowAddModal}
           todo={todoList}
+          handleTodo={setTodoList}
         />
         <Container className="pt-[60px] flex flex-col gap-[10px]">
           {todoList?.length > 0 ? (
