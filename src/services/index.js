@@ -6,11 +6,11 @@ const Services = () => {
 
   const getActivity = async () => {
     const res = await request.get(`/activity-groups?email=${config.email}`);
-    return res.data;
+    return res?.data;
   };
   const addActivity = async (payload) => {
     const res = await request.post(`/activity-groups`, payload);
-    return res.data;
+    return res?.data;
   };
 
   const getDetailActivity = async (id) => {

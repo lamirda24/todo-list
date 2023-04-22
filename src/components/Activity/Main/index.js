@@ -1,5 +1,4 @@
 import Container from "@/components/Reusable/Container";
-import api from "@/config/api";
 import services from "@/services";
 import React, { useEffect, useState } from "react";
 import CardContainer from "../CardContainer";
@@ -9,12 +8,14 @@ import HeaderActivity from "../Header";
 import moment from "moment";
 import { config } from "@/config/config";
 import ModalDelete from "@/components/Reusable/ModalDelete";
+import Alert from "@/components/Reusable/Alert";
 
 const MainActivity = () => {
   const [data, setData] = useState("");
   const [refresh, setRefresh] = useState(false);
   const [modalDelete, setModalDelete] = useState(false);
   const [selectedData, setSelectedData] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
 
   const addNewActivity = async () => {
     let payload = {
@@ -33,9 +34,20 @@ const MainActivity = () => {
     setData(res?.data);
   };
 
-  const handleModalDelete = (data) => {
+  const handleOpenmodalDelete = (data) => {
     setModalDelete(true);
     setSelectedData(data);
+  };
+
+  const handleCloseModal = () => {
+    setModalDelete(false);
+  };
+  const handleShowAlert = () => {
+    setShowAlert(true);
+  };
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+    setRefresh(!refresh);
   };
 
   return (
@@ -50,16 +62,17 @@ const MainActivity = () => {
       />
       {modalDelete && (
         <ModalDelete
-          data={selectedData}
-          handleModal={setModalDelete}
           show={modalDelete}
-          handleRefresh={setRefresh}
-          refresh={refresh}
-          isActivity
+          data={selectedData}
+          handleCloseModal={handleCloseModal}
+          handleShowAlert={handleShowAlert}
         />
       )}
+      {showAlert && (
+        <Alert handleCloseAlert={handleCloseAlert} showAlert={showAlert} />
+      )}
       <CardContainer>
-        {data.length > 0 ? (
+        {data?.length > 0 ? (
           <>
             {data?.map((item, id) => (
               <ItemCard
@@ -68,7 +81,7 @@ const MainActivity = () => {
                 title={item?.title}
                 date={moment(item?.created_at).format("DD MMMM YYYY")}
                 id={item?.id}
-                handleDelete={() => handleModalDelete(item)}
+                handleDelete={() => handleOpenmodalDelete(item)}
               />
             ))}
           </>

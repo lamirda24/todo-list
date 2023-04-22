@@ -8,12 +8,12 @@ const Header = (props) => {
         className="fixed top-0 flex w-full flex-col items-start h-[105px]  bg-[#16ABF8;] mx-auto justify-center"
         data-cy="header-background"
       >
-        <Container data_cy="HeaderContentContainer">
+        <Container>
           <p
             className="text-white font-bold text-[24px]"
             data-cy="header-title"
           >
-            TODO LIST APP
+            TO DO LIST APP
           </p>
         </Container>
       </div>
