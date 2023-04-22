@@ -9,7 +9,7 @@ import services from "@/services";
 import Modal from "@/components/Other/ModalAdd";
 import ModalDeleteTodo from "@/components/Other/ModalDeleteTodo";
 import ModalAdd from "@/components/Other/ModalAdd";
-import { Alert } from "@chakra-ui/react";
+import Alert from "@/components/Other/Alert";
 
 const DetailActivity = ({ todos }) => {
   const router = useRouter();

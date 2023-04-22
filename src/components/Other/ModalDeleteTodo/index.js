@@ -15,6 +15,7 @@ const ModalDeleteTodo = (props) => {
 
   const handleDeleteTodo = async () => {
     await services.deleteTodo(data?.id).then(() => {
+      // handleCloseModal();
       handleCloseModal();
       handleShowAlert();
     });
