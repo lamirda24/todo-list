@@ -134,26 +134,31 @@ const ModalAdd = (props) => {
                       </svg>
                     }
                   >
-                    {selected ? (
-                      <div className="w-[100px] flex flex-row gap-2 items-center">
-                        <span>{selected?.pict}</span>
-                        <p>{selected?.label}</p>
-                      </div>
-                    ) : (
-                      <p>Select priority</p>
-                    )}
+                    <div
+                      className="w-[100px] flex flex-row gap-2 items-center"
+                      data-cy="modal-add-priority-item"
+                    >
+                      {selected ? (
+                        <>
+                          <span>{selected?.pict}</span>
+                          <p>{selected?.label}</p>
+                        </>
+                      ) : (
+                        <p>Select priority</p>
+                      )}
+                    </div>
                   </MenuButton>
                   <MenuList>
                     <MenuOptionGroup
                       type="radio"
                       onChange={handleChange}
-                      data-cy="modal-add-priority-dropdown w-[200px]"
+                      data-cy="modal-add-priority-dropdown"
                       value={selected?.label ? selected?.label : ""}
                     >
                       {option?.map((item, index) => (
                         <MenuItemOption
                           key={index}
-                          data-cy={item.cy}
+                          data-cy="modal-add-priority-item"
                           value={item}
                         >
                           <div
