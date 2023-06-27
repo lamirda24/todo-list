@@ -155,10 +155,13 @@ const ModalAdd = (props) => {
                           key={item?.priority}
                           onClick={() => handleChangeDropDown(item)}
                           tabIndex={id}
+                          id={id}
                         >
                           <div
                             data-cy="modal-add-priority-item"
                             className="flex flex-row gap-2 items-center"
+                            tabIndex={id}
+                            id={id}
                           >
                             <span>{item.pict}</span>
                             <p>{item?.label}</p>
