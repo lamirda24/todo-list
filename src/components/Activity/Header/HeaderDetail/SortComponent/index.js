@@ -12,7 +12,7 @@ const SortComponent = (props) => {
         <button
           className="w-full flex flex-row gap-2 items-center"
           onClick={sortNew}
-          data-cy="sort-latest"
+          data-cy="sort-selection"
         >
           <Image
             src="/assets/sort/latest.png"
@@ -37,7 +37,7 @@ const SortComponent = (props) => {
         <button
           className="w-full flex flex-row gap-2 items-center"
           onClick={sortOld}
-          data-cy="sort-oldest"
+          data-cy="sort-selection"
         >
           <Image
             src="/assets/sort/oldest.png"
@@ -62,7 +62,7 @@ const SortComponent = (props) => {
         <button
           className="w-full flex flex-row gap-2 items-center"
           onClick={sortAz}
-          data-cy="sort-az"
+          data-cy="sort-selection"
         >
           <Image src="/assets/sort/az.png" alt="az" width={18} height={18} />
           <p className="text-[16px] text-[#4A4A4A] font-[400]">AZ</p>
@@ -82,7 +82,7 @@ const SortComponent = (props) => {
         <button
           className="w-full flex flex-row gap-2 items-center"
           onClick={sortZa}
-          data-cy="sort-za"
+          data-cy="sort-selection"
         >
           <Image src="/assets/sort/za.png" alt="za" width={18} height={18} />
           <p className="text-[16px] text-[#4A4A4A] font-[400]">ZA</p>
@@ -102,7 +102,7 @@ const SortComponent = (props) => {
         <button
           className="w-full flex flex-row gap-2 items-center"
           onClick={sortStat}
-          data-cy="sort-unfinished"
+          data-cy="sort-selection"
         >
           <Image
             src="/assets/sort/unfinished.png"
