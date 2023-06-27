@@ -1,6 +1,13 @@
 import services from "@/services";
 import { options } from "@/utils/priority";
 import {
+  Button,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItemOption,
+  MenuList,
+  MenuOptionGroup,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -13,6 +20,7 @@ import {
 import React, { useEffect, useState } from "react";
 
 const ModalAdd = (props) => {
+  console.log(props, "asd");
   // const router = useRouter();
   const { data, show, handleCloseModal, isEdit } = props;
   const [selected, setSelected] = useState("");
@@ -20,15 +28,12 @@ const ModalAdd = (props) => {
   const [name, setName] = useState("");
   const option = options;
 
-  const handleChangeDropDown = (item) => {
-    setSelected(item);
-    setShowOption(false);
-  };
-
   const hanldeChangeName = (e) => {
     setName(e.target.value);
   };
-  const handleSelected = () => {
+
+  const handleSelected = (e) => {
+    //for edit
     let selectedData;
     option?.map((item) => {
       if (item?.priority === props?.data?.priority) {
@@ -45,20 +50,24 @@ const ModalAdd = (props) => {
       payload = {
         activity_group_id: String(props?.data),
         title: name,
-        priority: selected.priority,
+        priority: selected?.priority,
       };
       await services.addTodo(payload);
     } else {
       payload = {
         title: name,
-        priority: selected.priority,
-        is_active: 1,
+        priority: selected?.priority,
       };
       await services.editTodoStatus(props?.data?.id, payload);
     }
     handleCloseModal();
 
     // return;
+  };
+
+  const handleChange = (e) => {
+    let selectedDate = e;
+    setSelected(selectedDate);
   };
 
   useEffect(() => {
@@ -106,71 +115,60 @@ const ModalAdd = (props) => {
                 className="relative inline-block text-left"
                 data-cy="modal-priority-dropdown"
               >
-                <button
-                  type="button"
-                  className="inline-flex w-full justify-between gap-x-1.5 rounded-d bg-white border-2  rounded-[6px] border-[#E5E5E5] px-3 py-2 text-sm ` text-[#111] shadow-sm hover:bg-gray-50"
-                  id="menu-button"
-                  aria-expanded="true"
-                  aria-haspopup="true"
-                  onClick={() => setShowOption(!showOption)}
-                  data-cy="modal-add-priority-dropdown"
-                >
-                  {!selected ? (
-                    <> Pilih priority</>
-                  ) : (
-                    <div className="flex flex-row items-center gap-2 ">
-                      <span>{selected.pict}</span>
-                      {selected.label}
-                    </div>
-                  )}
-                  <div className={`duration-300 ${showOption && "rotate-180"}`}>
-                    <svg
-                      className="-mr-1 h-5 w-5 text-gray-400"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  </div>
-                </button>
-                {showOption && (
-                  <div
-                    className="absolute -right-[20px]  mt-2 w-56 z-[13] origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                    role="menu"
-                    aria-orientation="vertical"
-                    aria-labelledby="menu-button"
-                    tabIndex="-1"
+                <Menu>
+                  <MenuButton
                     data-cy="modal-add-priority-dropdown"
+                    as={Button}
+                    rightIcon={
+                      <svg
+                        className="-mr-1 h-5 w-5 text-gray-400"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    }
                   >
-                    <div role="none" className="grid divide-y-2 ">
-                      {option?.map((item, id) => (
-                        <div
-                          className="text-gray-700  p-4 text-sm  cursor-pointer hover:bg-slate-400"
+                    {selected ? (
+                      <div className="w-[100px] flex flex-row gap-2 items-center">
+                        <span>{selected?.pict}</span>
+                        <p>{selected?.label}</p>
+                      </div>
+                    ) : (
+                      <p>Select priority</p>
+                    )}
+                  </MenuButton>
+                  <MenuList>
+                    <MenuOptionGroup
+                      type="radio"
+                      onChange={handleChange}
+                      data-cy="modal-add-priority-dropdown w-[200px]"
+                      value={selected?.label ? selected?.label : ""}
+                    >
+                      {option?.map((item, index) => (
+                        <MenuItemOption
+                          key={index}
                           data-cy={item.cy}
-                          key={item?.priority}
-                          onClick={() => handleChangeDropDown(item)}
-                          tabIndex={id}
-                          id={id}
+                          value={item}
                         >
                           <div
-                            data-cy="modal-add-priority-item"
                             className="flex flex-row gap-2 items-center"
-                            tabIndex={id}
-                            id={id}
+                            key={index}
+                            data-cy={item.cy}
                           >
-                            <span>{item.pict}</span>
+                            <span>{item?.pict} </span>
                             <p>{item?.label}</p>
                           </div>
-                        </div>
+                        </MenuItemOption>
                       ))}
-                    </div>
-                  </div>
-                )}
+                    </MenuOptionGroup>
+                  </MenuList>
+                </Menu>
               </div>
             </div>
           </form>
