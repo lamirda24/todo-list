@@ -133,7 +133,7 @@ const HeaderDetail = (props) => {
         <div className="flex flex-row gap-[45px] items-center">
           <div className="relative">
             <button
-              data-cy="sort-selection"
+              data-cy="todo-sort-button"
               className="p-4 rounded-[50%] border-solid border-2 border-[#E5E5E5] bg-none cursor-pointer"
               onClick={onSort}
             >
